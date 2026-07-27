@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#F5F2FA; display:flex; justify-content:center; padding:40px; }
+
+  /* ── POSTER CARD ── */
+  .poster {
+    width: 297mm; height: 420mm;
+    background: linear-gradient(170deg, #FDFBF7 0%, #F7F2EC 30%, #EDE4F0 100%);
+    position: relative; overflow: hidden;
+    box-shadow: 0 8px 40px rgba(120,100,140,0.25);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 60px;
+  }
+  /* Decorative sun rays */
+  .sun-rays {
+    position: absolute; top: -30%; left: 50%; transform: translateX(-50%);
+    width: 200%; height: 100%;
+    background: radial-gradient(ellipse at 50% 0%, rgba(196,164,85,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  /* Floating lavender blobs */
+  .blob {
+    position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.25; pointer-events: none;
+  }
+  .blob-1 { width: 280px; height: 280px; background:#D4C5E0; top:-80px; right:-60px; }
+  .blob-2 { width: 220px; height: 220px; background:#F0E5D0; bottom:-60px; left:-40px; }
+
+  .poster-content { position: relative; z-index: 1; }
+
+  .brand-tag { font-family:'Lato',sans-serif; font-weight:300; font-size:0.85rem; letter-spacing:0.2em; color:#8B7EAA; text-transform:uppercase; margin-bottom:10px; }
+
+  .bracelet-icon { font-size:5rem; margin-bottom:20px; filter: drop-shadow(0 4px 12px rgba(180,160,120,0.3)); }
+  
+  .product-name {
+    font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:700;
+    color:#3D3648; line-height:1.2; margin-bottom:8px;
+  }
+  .product-name span { color:#C4A455; }
+
+  .slogan {
+    font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:600;
+    color:#8B7EAA; font-style:italic; margin-bottom:32px;
+  }
+
+  .divider {
+    width:80px; height:2px; background:linear-gradient(90deg, transparent, #C4A455, transparent);
+    margin: 0 auto 32px;
+  }
+
+  .features {
+    display: flex; gap: 30px; justify-content: center; margin-bottom:48px;
+    flex-wrap: wrap;
+  }
+  .feature {
+    text-align: center; font-family:'Lato',sans-serif;
+  }
+  .feature-icon { font-size:1.6rem; margin-bottom:6px; }
+  .feature-text { font-size:0.75rem; font-weight:300; color:#6B6378; letter-spacing:0.04em; }
+
+  .description {
+    font-family:'Lato',sans-serif; font-size:0.95rem; color:#6B6378;
+    font-weight:300; line-height:1.7; max-width:420px; margin:0 auto 48px;
+  }
+
+  .footer-text {
+    font-family:'Lato',sans-serif; font-weight:400; font-size:0.78rem;
+    color:#8B7EAA; letter-spacing:0.08em;
+  }
+  .footer-text .brand { font-weight:700; color:#C4A455; font-size:0.9rem; }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background:white; padding:0; }
+    .poster { box-shadow:none; width:100%; height:auto; min-height:100vh; }
+  }
+
+  /* ── POSTER 2: Who We Are ── */
+  .poster-info {
+    width: 297mm; height: 420mm;
+    background: #FDFBF7;
+    box-shadow: 0 8px 40px rgba(120,100,140,0.25);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 60px; position: relative; overflow: hidden;
+  }
+  .poster-info .blob-info { width:300px; height:300px; background:#E8E4F2; top:-100px; right:-80px; }
+  .info-title {
+    font-family:'Playfair Display',serif; font-size:3rem; font-weight:700;
+    color:#3D3648; letter-spacing:0.04em; margin-bottom:6px;
+  }
+  .info-tagline {
+    font-family:'Lato',sans-serif; font-size:1rem; font-weight:300;
+    color:#8B7EAA; letter-spacing:0.06em; margin-bottom:8px;
+  }
+  .info-meta {
+    font-family:'Lato',sans-serif; font-size:0.72rem; font-weight:400;
+    color:#B0A0B8; letter-spacing:0.08em; margin-bottom:40px;
+  }
+  .social-grid { display:flex; flex-direction:column; gap:16px; margin-bottom:48px; }
+  .social-row {
+    display:flex; align-items:center; gap:14px;
+    font-family:'Lato',sans-serif; font-size:0.9rem; color:#6B6378;
+  }
+  .social-icon { font-size:1.5rem; width:36px; text-align:center; }
+
+  .page-break { page-break-after:always; }
+</style>
+</head>
+<body>
+
+<!-- ═══════ POSTER 1: HAPPY BRACELET ═══════ -->
+<div class="poster">
+  <div class="sun-rays"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="poster-content">
+    <div class="brand-tag">Artisanist</div>
+    <div class="bracelet-icon">💎☀️</div>
+    <div class="product-name">Happy <span>Bracelet</span></div>
+    <div class="slogan">A little happiness on your wrist ☀️</div>
+    <div class="divider"></div>
+    <div class="features">
+      <div class="feature"><div class="feature-icon">💠</div><div class="feature-text">NATURAL STONES</div></div>
+      <div class="feature"><div class="feature-icon">✨</div><div class="feature-text">MIYUKI BEADS</div></div>
+      <div class="feature"><div class="feature-icon">🤲</div><div class="feature-text">HANDMADE</div></div>
+      <div class="feature"><div class="feature-icon">🎁</div><div class="feature-text">GIFT READY</div></div>
+    </div>
+    <div class="description">Each Happy Bracelet is crafted with care — natural stones, delicate Miyuki beads, and a touch of gold. Light enough for every day, special enough to be your sunshine.</div>
+    <div class="footer-text"><span class="brand">ARTISANIST</span> — A Gift of Happiness</div>
+  </div>
+</div>
+
+<!-- ═══════ POSTER 2: WHO WE ARE ═══════ -->
+<div class="poster-info" style="margin-top:48px;">
+  <div class="blob blob-1" style="width:320px;height:320px;background:#E8E4F2;top:-120px;right:-80px;"></div>
+  <div class="blob blob-2" style="width:200px;height:200px;background:#F7F0DC;bottom:-60px;left:-40px;"></div>
+  <div class="poster-content">
+    <div class="brand-tag" style="margin-bottom:24px;">Connect With Us</div>
+    <div class="info-title">ARTISANIST</div>
+    <div class="info-tagline">A Gift of Happiness</div>
+    <div class="info-meta">Women-Owned · Boston, MA</div>
+    <div class="divider"></div>
+    <div class="social-grid">
+      <div class="social-row"><span class="social-icon">📸</span> Instagram <strong style="margin-left:8px;color:#C4A455;">@artisanist.store</strong></div>
+      <div class="social-row"><span class="social-icon">🛍️</span> Etsy <strong style="margin-left:8px;color:#C4A455;">etsy.com/shop/ArtisanIstUS</strong></div>
+      <div class="social-row"><span class="social-icon">📌</span> Pinterest <strong style="margin-left:8px;color:#C4A455;">pinterest.com/artisaniststore</strong></div>
+      <div class="social-row"><span class="social-icon">👤</span> Facebook <strong style="margin-left:8px;color:#C4A455;">facebook.com/artisanist</strong></div>
+    </div>
+    <div class="divider"></div>
+    <div class="description" style="font-size:0.85rem;">Every piece is handmade with natural stones and Miyuki beads. Mediterranean soul, Boston hands.</div>
+  </div>
+</div>
+
+</body>
+</html>

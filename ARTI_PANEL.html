@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTI CEO Yönetim Paneli</title>
+<style>
+  :root {
+    --lavender: #B8B0D0;
+    --lavender-light: #E8E4F2;
+    --lavender-pale: #F5F2FA;
+    --gold: #C4A455;
+    --gold-light: #F7F0DC;
+    --gold-pale: #FCF9F2;
+    --cream: #FDFBF7;
+    --rose: #D4A8A8;
+    --rose-light: #F5ECEC;
+    --sage: #A8B8A0;
+    --sage-light: #EDF2EC;
+    --sky: #A8B8C8;
+    --sky-light: #EDF1F5;
+    --peach: #D4BFA8;
+    --peach-light: #F7F2EC;
+    --dark: #3D3648;
+    --soft: #6B6378;
+    --white: #FFFFFF;
+    --green: #7AAA7E;
+    --yellow: #C4A455;
+    --red: #C48585;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(160deg, #F5F2FA 0%, #FDFBF7 40%, #F7F2EC 100%);
+    color: var(--dark);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 28px; background: var(--white);
+    border-radius: 20px; box-shadow: 0 2px 20px rgba(184,176,208,0.15);
+    margin-bottom: 20px; flex-wrap: wrap; gap: 16px;
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .header-left img { height: 52px; width: auto; border-radius: 12px; }
+  .header h1 { font-size: 1.4rem; font-weight: 700; color: var(--dark); letter-spacing: -0.01em; }
+  .header h1 span { color: var(--lavender); }
+  .header .subtitle { font-size: 0.75rem; color: var(--soft); }
+  .header-right { text-align: right; font-size: 0.72rem; color: var(--soft); line-height: 1.6; }
+  .header-right .live { color: var(--gold); font-weight: 700; font-size: 0.85rem; }
+
+  /* ── SECTION ── */
+  section { margin-bottom: 20px; }
+  .section-label {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+    font-weight: 700; color: var(--soft); margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-label::after { content:''; flex:1; height:1px; background:#E0DCE8; }
+
+  /* ── GRID ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--white); border-radius: 16px; padding: 18px 16px;
+    box-shadow: 0 2px 12px rgba(184,176,208,0.1);
+    border: 1px solid rgba(184,176,208,0.12);
+    transition: transform 0.15s, box-shadow 0.15s;
+    position: relative; overflow: hidden;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(184,176,208,0.2); }
+  .card .card-tag {
+    font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.07em;
+    font-weight: 700; margin-bottom: 6px;
+  }
+  .card .card-num { font-size: 1.6rem; font-weight: 700; color: var(--dark); line-height: 1.2; }
+  .card .card-sub { font-size: 0.72rem; color: var(--soft); margin-top: 2px; }
+  .card .card-body { font-size: 0.8rem; color: var(--dark); margin-top: 8px; line-height: 1.4; }
+  .card a { display: inline-block; margin-top: 8px; font-size: 0.75rem; font-weight: 600; text-decoration: none; }
+  .card a:hover { text-decoration: underline; }
+
+  /* color accents */
+  .card-lavender { border-top: 3px solid var(--lavender); }
+  .card-lavender .card-tag { color: #8B7EAA; }
+  .card-lavender a { color: #8B7EAA; }
+  .card-gold { border-top: 3px solid var(--gold); }
+  .card-gold .card-tag { color: #A08940; }
+  .card-gold a { color: #A08940; }
+  .card-rose { border-top: 3px solid var(--rose); }
+  .card-rose .card-tag { color: #B08080; }
+  .card-rose a { color: #B08080; }
+  .card-sage { border-top: 3px solid var(--sage); }
+  .card-sage .card-tag { color: #7A8A72; }
+  .card-sage a { color: #7A8A72; }
+  .card-sky { border-top: 3px solid var(--sky); }
+  .card-sky .card-tag { color: #7A8A98; }
+  .card-sky a { color: #7A8A98; }
+  .card-peach { border-top: 3px solid var(--peach); }
+  .card-peach .card-tag { color: #A09070; }
+  .card-peach a { color: #A09070; }
+
+  /* badges */
+  .badge {
+    display: inline-block; font-size: 0.62rem; font-weight: 700; padding: 2px 8px;
+    border-radius: 20px; margin-bottom: 4px;
+  }
+  .badge-green { background: #E2F0E4; color: #5A7A5E; }
+  .badge-yellow { background: #F7F0DC; color: #8B7820; }
+  .badge-red { background: #F5ECEC; color: #A06060; }
+  .badge-lavender { background: #E8E4F2; color: #6B5E80; }
+  .badge-online { background: #E2F0E4; color: #5A7A5E; }
+  .badge-standby { background: #F7F0DC; color: #8B7820; }
+
+  /* ── AGENT CARDS ── */
+  .agent-card {
+    text-align: center; padding: 14px 10px;
+  }
+  .agent-card .agent-icon { font-size: 1.4rem; margin-bottom: 4px; }
+  .agent-card .agent-name { font-weight: 700; font-size: 0.78rem; color: var(--dark); }
+  .agent-card .agent-role { font-size: 0.65rem; color: var(--soft); }
+  .agent-card .agent-status { margin-top: 6px; }
+
+  /* ── EVENT ROW ── */
+  .event-row {
+    display: flex; align-items: center; gap: 12px; padding: 10px 16px;
+    background: var(--white); border-radius: 12px; margin-bottom: 6px;
+    box-shadow: 0 1px 6px rgba(184,176,208,0.08); font-size: 0.82rem;
+  }
+  .event-row .edate { font-weight: 700; min-width: 70px; color: var(--dark); }
+  .event-row .ename { flex:1; }
+  .event-row .eorg { font-size: 0.7rem; color: var(--soft); min-width: 80px; text-align: right; }
+  .event-row .esale { font-weight: 700; min-width: 60px; text-align: right; }
+  .event-row .esale-good { color: var(--green); }
+
+  .section-header-row {
+    font-weight: 700; font-size: 0.68rem; color: var(--soft); text-transform: uppercase;
+    letter-spacing: 0.06em; padding: 6px 16px; margin-bottom: 4px;
+  }
+
+  /* ── TOKEN ── */
+  .token-bar { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 8px 0; }
+  .token-num { font-size: 1.3rem; font-weight: 700; color: var(--dark); }
+  .token-label { font-size: 0.68rem; color: var(--soft); }
+  .progress-wrap { flex:1; min-width: 140px; }
+  .progress-bg { height: 8px; background: #E8E4F2; border-radius: 10px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--lavender); border-radius: 10px; transition: width 0.5s; }
+
+  .footer { text-align: center; font-size: 0.68rem; color: var(--soft); margin-top: 24px; padding-top: 16px; border-top: 1px solid #E0DCE8; }
+
+  @media (max-width: 900px) { .grid-2,.grid-3,.grid-4,.grid-5,.grid-6 { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .grid-2,.grid-3,.grid-4,.grid-5,.grid-6 { grid-template-columns: 1fr; } .header { flex-direction:column; text-align:center; } .header-right { text-align:center; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ═══════ HEADER ═══════ -->
+<div class="header">
+  <div class="header-left">
+    <img src="logo.jpg" alt="Artisanist">
+    <div>
+      <h1>ARTI CEO <span>Yönetim Paneli</span></h1>
+      <div class="subtitle">"A Gift of Happiness" — Women-Owned Atelier · Boston, MA</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="live" id="liveTime">--:-- EDT</div>
+    <div id="liveDate">23 Temmuz 2026</div>
+    <div>🧠 deepseek-v4-pro · Gemini flash-lite</div>
+  </div>
+</div>
+
+<!-- ═══════ CONTENT LIBRARY ═══════ -->
+<section>
+  <div class="section-label">📚 İçerik Kütüphanesi</div>
+  <div class="grid-5">
+    <div class="card card-lavender">
+      <div class="card-tag">☀️ Happy Bracelet</div>
+      <div class="card-body" style="font-size:0.72rem;">Poster — taş anlamlı, sosyal medya hazır.</div>
+      <a href="file:///C:/Artisanist/Poster_Happy_Bracelet.png" target="_blank">→ Görseli aç</a>
+      <a href="file:///C:/Artisanist/04_Instagram/Instagram_Content_Pack_23July.md" style="margin-left:10px;">→ Caption</a>
+    </div>
+    <div class="card card-gold">
+      <div class="card-tag">📱 Biz Kimiz</div>
+      <div class="card-body" style="font-size:0.72rem;">Sosyal medya hesapları posteri.</div>
+      <a href="file:///C:/Artisanist/Poster_WhoWeAre.png" target="_blank">→ Görseli aç</a>
+    </div>
+    <div class="card card-rose">
+      <div class="card-tag">🌙 Festival Küpe</div>
+      <div class="card-body" style="font-size:0.72rem;">Gündüz/gece stil rehberi posteri.</div>
+      <a href="file:///C:/Artisanist/Poster_3.png" target="_blank">→ Görseli aç</a>
+    </div>
+    <div class="card card-sage">
+      <div class="card-tag">📝 Instagram Paketi</div>
+      <div class="card-body" style="font-size:0.72rem;">3 post + 3 story + hashtag — İngilizce.</div>
+      <a href="file:///C:/Artisanist/04_Instagram/Instagram_Content_Pack_23July.md" target="_blank">→ İçeriği aç</a>
+    </div>
+    <div class="card card-sky">
+      <div class="card-tag">💎 Taş Rehberi</div>
+      <div class="card-body" style="font-size:0.72rem;">Doğal taş anlamları — A4 PDF.</div>
+      <a href="file:///C:/Artisanist/Gemstone_Guide.pdf" target="_blank">→ PDF'yi aç</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PRIORITIES ═══════ -->
+<section>
+  <div class="section-label">⚡ Öncelikli Aksiyonlar</div>
+  <div class="grid-6">
+    <div class="card card-lavender">
+      <div class="card-tag">#1 · HEMEN</div>
+      <div class="card-body"><strong>Brighton Bazaar'da fotoğraf çek</strong> — ARTI'ya ilet, caption hazırlasın.</div>
+    </div>
+    <div class="card card-gold">
+      <div class="card-tag">#2 · 1-2 Gün</div>
+      <div class="card-body"><strong>AIST klasörüne fotoğrafları koy</strong> — Mira Luma işlesin.</div>
+    </div>
+    <div class="card card-rose">
+      <div class="card-tag">#3 · ~26 Tem</div>
+      <div class="card-body"><strong>Ürün listesini ilet</strong> — isim, fiyat, stok, taş türü.</div>
+    </div>
+    <div class="card card-sage">
+      <div class="card-tag">#4 · ⚡ Bu Hafta</div>
+      <div class="card-body"><strong>Castleberry Fairs başvurusu</strong> — Eventeny'den 3 etkinlik.</div>
+    </div>
+    <div class="card card-sky">
+      <div class="card-tag">#5 · Ağustos</div>
+      <div class="card-body"><strong>Etsy 10+ ürün</strong> — SEO başlık, etiket, açıklama.</div>
+    </div>
+    <div class="card card-peach">
+      <div class="card-tag">#6 · Bu Hafta</div>
+      <div class="card-body"><strong>Pinterest düzenle + holiday market kaydol</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ACTIVE JOBS ═══════ -->
+<section>
+  <div class="section-label">⚙️ Şu Anda Çalışan İşler</div>
+  <div class="grid-3">
+    <div class="card card-lavender">
+      <div class="card-tag">🎨 Creative Studio</div>
+      <span class="badge badge-online">🟢 ÇALIŞIYOR</span>
+      <div class="card-body">"Happy Bracelet" + "Biz Kimiz" stant posterleri hazırlanıyor.</div>
+    </div>
+    <div class="card card-rose">
+      <div class="card-tag">📱 Social Media</div>
+      <span class="badge badge-online">🟢 ÇALIŞIYOR</span>
+      <div class="card-body">Instagram/Pinterest için görsel + mesaj paketi. Brighton Bazaar + ürün spotları.</div>
+    </div>
+    <div class="card card-sky">
+      <div class="card-tag">🔄 AIST Sync</div>
+      <span class="badge badge-lavender">⏰ 09:00 EDT</span>
+      <div class="card-body">Her sabah AIST klasörü → C:/Artisanist/ senkronizasyonu.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ REPORTS ═══════ -->
+<section>
+  <div class="section-label">📋 Raporlar & Finansal</div>
+  <div class="grid-4">
+    <div class="card card-lavender">
+      <div class="card-tag">CEO Durum Raporu</div>
+      <div class="card-body">23 Tem — Brighton Bazaar canlı, veri boşluğu kapandı, Etsy 3 satış 2×5⭐.</div>
+      <a href="file:///C:/Users/Ulku/Documents/Artisanist/ARTI_CEO_JOURNAL.md">→ Journal'da oku</a>
+    </div>
+    <div class="card card-gold">
+      <div class="card-tag">Temmuz Satış</div>
+      <div class="card-num">$1,100</div>
+      <div class="card-sub">11 Tem: $700 · 16-19 Tem: $400 · Etsy: 3 satış</div>
+    </div>
+    <div class="card card-rose">
+      <div class="card-tag">En Çok Satan</div>
+      <div class="card-body"><strong>Festival Küpeler</strong> — her iki etkinlikte de lider ürün kategorisi.</div>
+    </div>
+    <div class="card card-sky">
+      <div class="card-tag">Sonraki Rapor</div>
+      <div class="card-body"><strong>Haftalık CEO Raporu</strong><br>📅 27 Temmuz Pazartesi</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SUBAGENTS ═══════ -->
+<section>
+  <div class="section-label">🤖 ARTİ Ajans Ekibi</div>
+  <div class="grid-6">
+    <div class="card card-lavender agent-card">
+      <div class="agent-icon">🧠</div>
+      <div class="agent-name">ARTI</div>
+      <div class="agent-role">AI Operating CEO</div>
+      <span class="badge badge-online">🟢 Aktif</span>
+    </div>
+    <div class="card card-gold agent-card">
+      <div class="agent-icon">✨</div>
+      <div class="agent-name">Mira Luma</div>
+      <div class="agent-role">Baş Asistan</div>
+      <span class="badge badge-online">🟢 Aktif</span>
+    </div>
+    <div class="card card-rose agent-card">
+      <div class="agent-icon">📦</div>
+      <div class="agent-name">Etsy Specialist</div>
+      <div class="agent-role">SEO & Listing</div>
+      <span class="badge badge-standby">🟡 Hazır</span>
+    </div>
+    <div class="card card-sage agent-card">
+      <div class="agent-icon">📱</div>
+      <div class="agent-name">Social Media</div>
+      <div class="agent-role">IG & Pinterest</div>
+      <span class="badge badge-standby">🟡 Hazır</span>
+    </div>
+    <div class="card card-sky agent-card">
+      <div class="agent-icon">🎪</div>
+      <div class="agent-name">Events Specialist</div>
+      <div class="agent-role">Etkinlik & İşbirliği</div>
+      <span class="badge badge-standby">🟡 Hazır</span>
+    </div>
+    <div class="card card-peach agent-card">
+      <div class="agent-icon">🎨</div>
+      <div class="agent-name">Creative Studio</div>
+      <div class="agent-role">Koleksiyon & Fotoğraf</div>
+      <span class="badge badge-standby">🟡 Hazır</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PLATFORMS ═══════ -->
+<section>
+  <div class="section-label">📡 Platformlar</div>
+  <div class="grid-5">
+    <div class="card card-lavender">
+      <div class="card-tag">Etsy</div>
+      <span class="badge badge-green">CANLI</span>
+      <div class="card-num">3</div>
+      <div class="card-sub">Satış · 2× ⭐5</div>
+      <a href="https://etsy.com/shop/ArtisanIstUS" target="_blank">→ Mağaza</a>
+    </div>
+    <div class="card card-gold">
+      <div class="card-tag">Instagram</div>
+      <span class="badge badge-yellow">AKTİF</span>
+      <div class="card-num">1,075</div>
+      <div class="card-sub">Takipçi</div>
+      <a href="https://instagram.com/artisanist.store" target="_blank">→ @artisanist.store</a>
+    </div>
+    <div class="card card-rose">
+      <div class="card-tag">Pinterest</div>
+      <span class="badge badge-yellow">AKTİF</span>
+      <div class="card-num">2</div>
+      <div class="card-sub">Takipçi · 4 Pano</div>
+      <a href="https://pinterest.com/artisaniststore" target="_blank">→ Profil</a>
+    </div>
+    <div class="card card-sky">
+      <div class="card-tag">Facebook</div>
+      <span class="badge badge-lavender">MEVCUT</span>
+      <div class="card-num">—</div>
+      <div class="card-sub">Optimize edilecek</div>
+      <a href="https://facebook.com/artisanist" target="_blank">→ Sayfa</a>
+    </div>
+    <div class="card card-sage">
+      <div class="card-tag">Website</div>
+      <span class="badge badge-red">YENİLENECEK</span>
+      <div class="card-num">🔴</div>
+      <div class="card-sub">SOLD OUT</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ EVENTS ═══════ -->
+<section>
+  <div class="section-label">🎪 Etkinlik Takvimi</div>
+  <div class="card card-lavender" style="margin-bottom:14px;">
+    <div class="card-tag">✅ Geçmiş Etkinlikler</div>
+    <div style="margin-top:8px;">
+      <div class="event-row"><span class="edate">11 Tem</span><span class="ename">Assembly Row Market</span><span class="eorg">BWM</span><span class="esale esale-good">$700</span></div>
+      <div class="event-row"><span class="edate">16-19 Tem</span><span class="ename">Popup Store</span><span class="eorg">BWM</span><span class="esale">$400</span></div>
+      <div class="event-row"><span class="edate">23-24 Tem</span><span class="ename">Night Bazaar</span><span class="eorg">Brighton Bazaar</span><span class="esale">—</span></div>
+    </div>
+  </div>
+  <div class="card card-gold">
+    <div class="card-tag">🗓️ Gelecek Etkinlikler</div>
+    <div style="margin-top:8px;">
+      <div class="event-row"><span class="edate">4 Eki</span><span class="ename">Brighton Bazaar</span><span class="eorg">Brighton Bazaar</span><span class="esale" style="color:var(--gold)">⭐⭐</span></div>
+      <div class="event-row"><span class="edate">10 Eki</span><span class="ename">Assembly Row Market</span><span class="eorg">BWM</span><span class="esale" style="color:var(--gold)">⭐</span></div>
+      <div class="event-row"><span class="edate">24-25 Eki</span><span class="ename">Castleberry Fall Craft</span><span class="eorg">Castleberry</span><span class="esale" style="color:var(--gold)">⭐⭐⭐</span></div>
+      <div class="event-row"><span class="edate">29-30 Eki</span><span class="ename">Halloween Bazaar 🎃</span><span class="eorg">Brighton Bazaar</span><span class="esale" style="color:var(--gold)">⭐⭐⭐</span></div>
+      <div class="event-row"><span class="edate">13-15 Kas</span><span class="ename">Craft & Food Fair</span><span class="eorg">Castleberry</span><span class="esale" style="color:var(--gold)">⭐⭐⭐</span></div>
+      <div class="event-row"><span class="edate">27-29 Kas</span><span class="ename">Castleberry Faire 🎄</span><span class="eorg">Castleberry</span><span class="esale" style="color:var(--gold)">⭐⭐⭐</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PARTNERS & HOLIDAY ═══════ -->
+<section>
+  <div class="section-label">🤝 İş Ortakları & Holiday Market Fırsatları</div>
+  <div class="grid-2">
+    <div class="card card-lavender">
+      <div class="card-tag">Aktif Ortaklar</div>
+      <div class="card-body">
+        <strong>BWM</strong> — Assembly Row aylık + popup<br>
+        <strong>Brighton Bazaar</strong> — Night Bazaar serisi<br>
+        <strong>Stoneham Art Festival</strong> — Geçmiş ortak<br>
+        <strong>Castleberry Fairs</strong> 🆕 — 3 MA etkinliği, Eventeny başvuru
+      </div>
+    </div>
+    <div class="card card-gold">
+      <div class="card-tag">🎄 Holiday Market Takip Listesi</div>
+      <div class="card-body" style="font-size:0.75rem;">
+        Snowport Holiday Market (Seaport) · SoWa Winter Market · Harvard Square Holiday Fair · Boston Christmas Festival · Salem Holiday Market · Worcester Festival of Lights<br>
+        <span style="color:var(--soft);font-size:0.68rem;">💡 Şimdiden e-posta bültenlerine kaydol, başvuru açılınca ilk haber al.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ TOKEN ═══════ -->
+<section>
+  <div class="section-label">💰 AI Maliyet Takibi</div>
+  <div class="card card-sky">
+    <div class="token-bar">
+      <div><div class="token-num" id="tokenUsed">—</div><div class="token-label">bugünkü token</div></div>
+      <div class="progress-wrap">
+        <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:var(--soft);margin-bottom:2px;">
+          <span>Aylık bütçe: $20</span><span id="tokenEst">—</span>
+        </div>
+        <div class="progress-bg"><div class="progress-fill" id="tokenBar" style="width:0%"></div></div>
+      </div>
+      <div style="font-size:0.68rem;color:var(--soft);">🧠 deepseek-v4-pro · 📊 09:00 EDT günlük rapor · 💡 ~$0.30-0.80/gün</div>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  📁 Panel: C:\Artisanist\ARTI_PANEL.html &nbsp;|&nbsp; 📋 Rapor: C:\Artisanist\ARTI_RAPOR.md &nbsp;|&nbsp; 📓 Journal: C:\Users\Ulku\Documents\Artisanist\ARTI_CEO_JOURNAL.md
+</div>
+
+</div>
+
+<script>
+  function updateTime() {
+    const now = new Date();
+    const opts = { timeZone: 'America/New_York', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false };
+    document.getElementById('liveTime').textContent = now.toLocaleTimeString('tr-TR', opts) + ' EDT';
+  }
+  updateTime(); setInterval(updateTime, 30000);
+
+  const tIn=14000, tOut=5000, cIn=(tIn/1e6)*0.40, cOut=(tOut/1e6)*1.60, tc=(cIn+cOut).toFixed(3), db=0.67, p=Math.min(100,(tc/db)*100).toFixed(0);
+  document.getElementById('tokenUsed').textContent='~'+(tIn+tOut).toLocaleString();
+  document.getElementById('tokenEst').textContent='~$'+tc+' / $'+db+' günlük';
+  document.getElementById('tokenBar').style.width=p+'%';
+  if(p>70)document.getElementById('tokenBar').style.background='#C4A455';
+  if(p>90)document.getElementById('tokenBar').style.background='#C48585';
+</script>
+</body>
+</html>

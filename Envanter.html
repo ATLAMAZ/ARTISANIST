@@ -3,55 +3,54 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Century Gothic','Segoe UI',sans-serif;background:linear-gradient(160deg,#F5F2FA,#FDFBF7 40%,#F7F2EC);color:var(--dk);line-height:1.5;min-height:100vh;font-size:14px}
 .c{max-width:1400px;margin:0 auto;padding:20px}
-h1{font-size:1.4rem;margin-bottom:2px}h1 span{color:var(--lv)}.sub{font-size:.75rem;color:var(--sf);margin-bottom:16px}
+h1{font-size:1.4rem;margin-bottom:2px}h1 span{color:var(--lv)}.sub{font-size:.75rem;color:var(--sf);margin-bottom:14px}
 .toolbar{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
 .toolbar input,.toolbar select{padding:7px 12px;border:1px solid #E0DCE8;border-radius:10px;font-size:.82rem;outline:none;background:var(--wh)}
 .toolbar input:focus,.toolbar select:focus{border-color:var(--lv)}
 .toolbar input{flex:1;min-width:180px}
 .btn{padding:7px 14px;border-radius:10px;border:none;font-weight:600;font-size:.78rem;cursor:pointer}.btn:hover{opacity:.9}
 .btn-lv{background:var(--lv);color:white}.btn-gd{background:var(--gd);color:white}.btn-back{background:var(--sf);color:white;text-decoration:none}
-.summary{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}
-.summ-card{background:var(--wh);border-radius:12px;padding:14px;box-shadow:0 2px 10px rgba(184,176,208,.08);text-align:center}
-.summ-card .num{font-size:1.5rem;font-weight:700}.summ-card .lbl{font-size:.65rem;color:var(--sf);text-transform:uppercase;margin-top:2px}
-.summ-card:nth-child(1){border-top:3px solid var(--lv)}.summ-card:nth-child(2){border-top:3px solid var(--gd)}.summ-card:nth-child(3){border-top:3px solid var(--gn)}.summ-card:nth-child(4){border-top:3px solid var(--rd)}.summ-card:nth-child(5){border-top:3px solid var(--lv)}
+.btn-sell{background:var(--gn);color:white;padding:4px 10px;font-size:.7rem}
+.summary{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}
+.summ-card{background:var(--wh);border-radius:12px;padding:12px;box-shadow:0 2px 10px rgba(184,176,208,.08);text-align:center}
+.summ-card .num{font-size:1.3rem;font-weight:700}.summ-card .lbl{font-size:.62rem;color:var(--sf);text-transform:uppercase;margin-top:2px}
+.summ-card:nth-child(1){border-top:3px solid var(--lv)}.summ-card:nth-child(2){border-top:3px solid var(--lv)}.summ-card:nth-child(3){border-top:3px solid var(--gd)}.summ-card:nth-child(4){border-top:3px solid var(--gn)}.summ-card:nth-child(5){border-top:3px solid var(--rd)}.summ-card:nth-child(6){border-top:3px solid var(--sf)}
 
 .table-wrap{overflow-x:auto;border-radius:14px;box-shadow:0 2px 16px rgba(184,176,208,.1)}
-table{width:100%;border-collapse:collapse;background:var(--wh);min-width:1100px}
+table{width:100%;border-collapse:collapse;background:var(--wh);min-width:1200px}
 th{background:#F5F2FA;color:var(--sf);font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;padding:10px 8px;text-align:left;font-weight:700;white-space:nowrap}
 td{padding:8px;border-bottom:1px solid #F0ECF5;font-size:.8rem}
 tr:hover{background:#FAF8FC}
+tr.sold-row{background:#FFF5F5;color:#A08080}
 .editable{cursor:pointer;transition:background .15s}.editable:hover{background:#F0ECFA}
 .badge-sm{display:inline-block;font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:20px}
-.bg{background:#E2F0E4;color:#5A7A5E}.by{background:#F7F0DC;color:#8B7820}.br{background:#F5ECEC;color:#A06060}
+.bg{background:#E2F0E4;color:#5A7A5E}.by{background:#F7F0DC;color:#8B7820}
 .profit-good{color:var(--gn);font-weight:700}.profit-ok{color:var(--gd);font-weight:700}
 .inline-edit{border:2px solid var(--lv);border-radius:6px;padding:3px 6px;font-size:.8rem;width:100%;outline:none;font-family:inherit}
 select.inline-edit{border:2px solid var(--lv);border-radius:6px;padding:3px 6px;font-size:.8rem;outline:none}
-.ft{text-align:center;font-size:.68rem;color:var(--sf);margin-top:20px}
-.ft a{color:var(--lv);text-decoration:none}
-
-/* Quick add form */
-.quick-add{background:var(--wh);border-radius:14px;padding:16px;margin-bottom:16px;box-shadow:0 2px 12px rgba(184,176,208,.08);display:none}
+.total-row td{font-weight:700;background:#F5F2FA;font-size:.82rem;border-top:2px solid var(--lv)}
+.quick-add{background:var(--wh);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 2px 12px rgba(184,176,208,.08);display:none}
 .quick-add .row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
-.quick-add .field{display:flex;flex-direction:column;gap:4px}
-.quick-add .field label{font-size:.65rem;font-weight:700;color:var(--sf);text-transform:uppercase}
+.quick-add .field{display:flex;flex-direction:column;gap:4px}.quick-add .field label{font-size:.65rem;font-weight:700;color:var(--sf);text-transform:uppercase}
 .quick-add input,.quick-add select{padding:7px 10px;border:1px solid #E0DCE8;border-radius:8px;font-size:.8rem;outline:none;background:var(--wh)}
-.quick-add input:focus,.quick-add select:focus{border-color:var(--lv)}
+.ft{text-align:center;font-size:.68rem;color:var(--sf);margin-top:18px}.ft a{color:var(--lv);text-decoration:none}
 @media(max-width:800px){.summary{grid-template-columns:1fr 1fr 1fr}}
 </style></head><body>
 <div class="c">
 <h1>📦 ARTI<span>sanist</span> · Ürün Envanteri</h1>
-<div class="sub">🖊️ Hücreye çift tıkla → düzenle · 💾 Otomatik kayıt · Son güncelleme: <span id="updated">—</span></div>
+<div class="sub">🖊️ Çift tıkla → düzenle · 💾 Otomatik kayıt · Son güncelleme: <span id="updated">—</span></div>
 
 <div class="summary">
 <div class="summ-card"><div class="num" id="totalProducts">0</div><div class="lbl">Toplam Ürün</div></div>
-<div class="summ-card"><div class="num" id="totalStock">0</div><div class="lbl">Toplam Stok</div></div>
-<div class="summ-card"><div class="num" id="totalValue">$0</div><div class="lbl">Satış Değeri</div></div>
-<div class="summ-card"><div class="num" id="totalCost">$0</div><div class="lbl">Maliyet</div></div>
-<div class="summ-card"><div class="num" id="totalProfit">$0</div><div class="lbl">Kâr</div></div>
+<div class="summ-card"><div class="num" id="totalStock">0</div><div class="lbl">Stokta</div></div>
+<div class="summ-card"><div class="num" id="totalSold">0</div><div class="lbl">Satılan</div></div>
+<div class="summ-card"><div class="num" id="totalValue">$0</div><div class="lbl">Potansiyel Gelir</div></div>
+<div class="summ-card"><div class="num" id="totalRevenue">$0</div><div class="lbl">Gerçekleşen Satış</div></div>
+<div class="summ-card"><div class="num" id="totalProfit">$0</div><div class="lbl">Gerçekleşen Kâr</div></div>
 </div>
 
 <div class="toolbar">
-<input type="text" id="search" placeholder="🔍 Ara... (isim, no, malzeme)" oninput="renderTable()">
+<input type="text" id="search" placeholder="🔍 Ara..." oninput="renderTable()">
 <select id="filterCat" onchange="renderTable()"><option value="">Tüm Kategoriler</option></select>
 <select id="filterType" onchange="renderTable()"><option value="">Tüm Türler</option><option value="El Yapımı">El Yapımı</option><option value="Hazır">Hazır</option></select>
 <select id="filterPlatform" onchange="renderTable()"><option value="">Tüm Platformlar</option><option value="Fuar">Fuar</option><option value="Etsy">Etsy</option><option value="Fuar+Etsy">Fuar+Etsy</option></select>
@@ -60,17 +59,16 @@ select.inline-edit{border:2px solid var(--lv);border-radius:6px;padding:3px 6px;
 <a class="btn btn-back" href="ARTI_PANEL.html">← Panele Dön</a>
 </div>
 
-<!-- Quick Add Form -->
 <div class="quick-add" id="quickAdd">
 <div class="row">
-<div class="field"><label>Ürün No</label><input id="qaNo" placeholder="örn: FK-001"></div>
-<div class="field"><label>Ürün Adı</label><input id="qaName" placeholder="örn: Festival Küpe Gold" style="min-width:160px"></div>
+<div class="field"><label>Ürün No</label><input id="qaNo" placeholder="FK-001"></div>
+<div class="field"><label>Ürün Adı</label><input id="qaName" placeholder="Festival Küpe" style="min-width:150px"></div>
 <div class="field"><label>Kategori</label><select id="qaCat"><option>Küpe</option><option>Yüzük</option><option>Bileklik</option><option>Kolye</option></select></div>
 <div class="field"><label>Tür</label><select id="qaType"><option>El Yapımı</option><option>Hazır</option></select></div>
-<div class="field"><label>Malzeme</label><input id="qaMat" placeholder="örn: Miyuki + Altın"></div>
-<div class="field"><label>Alış $</label><input id="qaCost" type="number" step="0.01" style="width:70px"></div>
-<div class="field"><label>Satış $</label><input id="qaSale" type="number" step="0.01" style="width:70px"></div>
-<div class="field"><label>Stok</label><input id="qaStock" type="number" style="width:60px" value="1"></div>
+<div class="field"><label>Malzeme</label><input id="qaMat" placeholder="Miyuki + Altın"></div>
+<div class="field"><label>Alış $</label><input id="qaCost" type="number" step="0.01" style="width:65px"></div>
+<div class="field"><label>Satış $</label><input id="qaSale" type="number" step="0.01" style="width:65px"></div>
+<div class="field"><label>Stok</label><input id="qaStock" type="number" style="width:55px" value="1"></div>
 <div class="field"><label>Platform</label><select id="qaPlatform"><option>Fuar</option><option>Etsy</option><option>Fuar+Etsy</option></select></div>
 <div class="field"><label>Açıklama</label><input id="qaDesc" placeholder="Kısa açıklama"></div>
 <div class="field"><label>&nbsp;</label><button class="btn btn-gd" onclick="quickAdd()">Ekle</button></div>
@@ -78,40 +76,46 @@ select.inline-edit{border:2px solid var(--lv);border-radius:6px;padding:3px 6px;
 </div>
 
 <div class="table-wrap"><table><thead><tr>
-<th>No</th><th>Ürün Adı</th><th>Kategori</th><th>Tür</th><th>Malzeme</th><th>Alış</th><th>Satış</th><th>Kâr</th><th>Stok</th><th>Platform</th><th>Açıklama</th><th>✕</th>
-</tr></thead><tbody id="tbody"></tbody></table></div>
+<th>No</th><th>Ürün Adı</th><th>Kategori</th><th>Tür</th><th>Malzeme</th><th>Alış</th><th>Satış</th><th>Kâr</th><th>Stok</th><th>Satıldı</th><th>Platform</th><th>Açıklama</th><th>Sat</th><th>✕</th>
+</tr></thead><tbody id="tbody"></tbody>
+<tfoot id="tfoot"></tfoot></table></div>
 
-<div class="ft"><a href="ARTI_PANEL.html">← ARTI CEO Paneli</a> · Veriler tarayıcında saklanır</div>
+<div class="ft"><a href="ARTI_PANEL.html">← ARTI CEO Paneli</a> · Veriler tarayıcında localStorage'da saklanır</div>
 </div>
 <script>
-let products = JSON.parse(localStorage.getItem('artisanist_inventory_v2') || '[]');
+let products = JSON.parse(localStorage.getItem('artisanist_inventory_v3') || '[]');
 if(products.length===0){
   products = [
-    {no:'FK-001',name:'Festival Küpe — Gold',cat:'Küpe',type:'El Yapımı',mat:'Miyuki + Altın',cost:8,sale:25,stock:5,platform:'Fuar+Etsy',desc:'Hafif, hareketli. Yaz favorisi.'},
-    {no:'FK-002',name:'Festival Küpe — Rose',cat:'Küpe',type:'El Yapımı',mat:'Miyuki + Pembe',cost:8,sale:25,stock:3,platform:'Fuar+Etsy',desc:'Romantik pembe tonları.'},
-    {no:'HB-001',name:'Happy Bracelet',cat:'Bileklik',type:'El Yapımı',mat:'6 Doğal Taş + Altın Miyuki',cost:12,sale:45,stock:4,platform:'Fuar+Etsy',desc:'Citrine, Carnelian, Amazonite, Rose Quartz'},
-    {no:'MK-001',name:'Mini Küpe Seti (3lü)',cat:'Küpe',type:'El Yapımı',mat:'Miyuki + Altın',cost:5,sale:10,stock:20,platform:'Fuar',desc:'En çok satan! Renkli, her güne uygun.'},
-    {no:'DK-001',name:'Deniz Charm Kolye',cat:'Kolye',type:'El Yapımı',mat:'Deniz Kabuğu + Altın Zincir',cost:10,sale:35,stock:2,platform:'Fuar',desc:'Pastel yaz kolyesi.'},
-    {no:'DTY-001',name:'Doğal Taş Yüzük — Ametist',cat:'Yüzük',type:'El Yapımı',mat:'Ametist + Gümüş',cost:7,sale:25,stock:3,platform:'Fuar+Etsy',desc:'Ayarlanabilir.'},
-    {no:'ECB-001',name:'El Örmesi Çiçek Bileklik',cat:'Bileklik',type:'El Yapımı',mat:'Örme İp + Boncuk',cost:4,sale:20,stock:6,platform:'Fuar',desc:'Crochet flower. Bohemian.'},
-    {no:'CTK-001',name:'Cam Taşlı Kolye — Mavi',cat:'Kolye',type:'Hazır',mat:'Cam Taş + Gümüş Zincir',cost:6,sale:30,stock:2,platform:'Fuar+Etsy',desc:'Serin yaz tonları.'},
+    {no:'FK-001',name:'Festival Küpe — Gold',cat:'Küpe',type:'El Yapımı',mat:'Miyuki + Altın',cost:8,sale:25,stock:5,sold:0,platform:'Fuar+Etsy',desc:'Hafif, hareketli.'},
+    {no:'FK-002',name:'Festival Küpe — Rose',cat:'Küpe',type:'El Yapımı',mat:'Miyuki + Pembe',cost:8,sale:25,stock:3,sold:2,platform:'Fuar+Etsy',desc:'Romantik pembe tonları.'},
+    {no:'HB-001',name:'Happy Bracelet',cat:'Bileklik',type:'El Yapımı',mat:'6 Doğal Taş',cost:12,sale:45,stock:4,sold:0,platform:'Fuar+Etsy',desc:'6 taş 6 anlam.'},
+    {no:'MK-001',name:'Mini Küpe Seti (3lü)',cat:'Küpe',type:'El Yapımı',mat:'Miyuki + Altın',cost:5,sale:10,stock:20,sold:12,platform:'Fuar',desc:'En çok satan.'},
+    {no:'DK-001',name:'Deniz Charm Kolye',cat:'Kolye',type:'El Yapımı',mat:'Deniz Kabuğu + Altın',cost:10,sale:35,stock:2,sold:1,platform:'Fuar',desc:'Pastel yaz kolyesi.'},
+    {no:'DTY-001',name:'Doğal Taş Yüzük',cat:'Yüzük',type:'El Yapımı',mat:'Ametist + Gümüş',cost:7,sale:25,stock:3,sold:0,platform:'Fuar+Etsy',desc:'Ayarlanabilir.'},
+    {no:'ECB-001',name:'Örme Çiçek Bileklik',cat:'Bileklik',type:'El Yapımı',mat:'Örme İp + Boncuk',cost:4,sale:20,stock:6,sold:2,platform:'Fuar',desc:'Crochet flower.'},
+    {no:'CTK-001',name:'Cam Taşlı Kolye',cat:'Kolye',type:'Hazır',mat:'Cam Taş + Gümüş',cost:6,sale:30,stock:1,sold:2,platform:'Fuar+Etsy',desc:'Serin yaz tonları.'},
   ];
   save();
 }
 let editing=null;
 
-function save(){ localStorage.setItem('artisanist_inventory_v2',JSON.stringify(products)); updateSummary(); document.getElementById('updated').textContent=new Date().toLocaleString('tr-TR'); }
+function save(){ localStorage.setItem('artisanist_inventory_v3',JSON.stringify(products)); updateSummary(); document.getElementById('updated').textContent=new Date().toLocaleString('tr-TR'); }
+
 function updateSummary(){
   document.getElementById('totalProducts').textContent=products.length;
-  let ts=0,tv=0,tc=0;
-  products.forEach(p=>{ts+=p.stock;tv+=p.sale*p.stock;tc+=p.cost*p.stock});
+  let ts=0,tsold=0,tv=0,trev=0,tcs=0;
+  products.forEach(p=>{
+    ts+=p.stock; tsold+=(p.sold||0);
+    tv+=p.sale*p.stock; trev+=p.sale*(p.sold||0);
+    tcs+=p.cost*(p.sold||0);
+  });
   document.getElementById('totalStock').textContent=ts;
+  document.getElementById('totalSold').textContent=tsold;
   document.getElementById('totalValue').textContent='$'+tv;
-  document.getElementById('totalCost').textContent='$'+tc;
-  document.getElementById('totalProfit').textContent='$'+(tv-tc);
+  document.getElementById('totalRevenue').textContent='$'+trev;
+  document.getElementById('totalProfit').textContent='$'+(trev-tcs);
   let cats=[...new Set(products.map(p=>p.cat))];
-  let sel=document.getElementById('filterCat');
-  sel.innerHTML='<option value="">Tüm Kategoriler</option>'+cats.map(c=>'<option value="'+c+'">'+c+'</option>').join('');
+  document.getElementById('filterCat').innerHTML='<option value="">Tüm Kategoriler</option>'+cats.map(c=>'<option value="'+c+'">'+c+'</option>').join('');
 }
 
 function renderTable(){
@@ -126,26 +130,49 @@ function renderTable(){
     if(!q)return true;
     return (p.no+p.name+p.mat+p.desc).toLowerCase().includes(q);
   });
+  // Table body
   document.getElementById('tbody').innerHTML=filtered.map(p=>{
     let idx=products.indexOf(p);
     let profit=p.sale-p.cost;
     let margin=p.cost>0?((profit/p.cost)*100).toFixed(0):'-';
     let pc=profit>15?'profit-good':profit>5?'profit-ok':'';
-    return `<tr>
-<td class="editable" ondblclick="editCell(this,${idx},'no')">${p.no}</td>
-<td class="editable" ondblclick="editCell(this,${idx},'name')">${p.name}</td>
-<td class="editable" ondblclick="editCell(this,${idx},'cat','select','Küpe,Yüzük,Bileklik,Kolye')">${p.cat}</td>
-<td class="editable" ondblclick="editCell(this,${idx},'type','select','El Yapımı,Hazır')">${p.type}</td>
-<td class="editable" ondblclick="editCell(this,${idx},'mat')">${p.mat}</td>
-<td class="editable" ondblclick="editCell(this,${idx},'cost','number')">$${p.cost}</td>
-<td class="editable" ondblclick="editCell(this,${idx},'sale','number')">$${p.sale}</td>
-<td class="${pc}">$${profit} (%${margin}%)</td>
-<td class="editable" ondblclick="editCell(this,${idx},'stock','number')">${p.stock}</td>
-<td class="editable" ondblclick="editCell(this,${idx},'platform','select','Fuar,Etsy,Fuar+Etsy')">${p.platform}</td>
-<td class="editable" style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" ondblclick="editCell(this,${idx},'desc')">${p.desc||'—'}</td>
-<td><span style="cursor:pointer;color:var(--rd);font-weight:700" onclick="products.splice(${idx},1);save();renderTable()">✕</span></td></tr>`;
+    let sold=p.sold||0;
+    return '<tr class="'+(sold>0&&p.stock===0?'sold-row':'')+'">'
++'<td class="editable" ondblclick="editCell(this,'+idx+',\'no\')">'+p.no+'</td>'
++'<td class="editable" ondblclick="editCell(this,'+idx+',\'name\')">'+p.name+'</td>'
++'<td class="editable" ondblclick="editCell(this,'+idx+',\'cat\',\'select\',\'Küpe,Yüzük,Bileklik,Kolye\')">'+p.cat+'</td>'
++'<td class="editable" ondblclick="editCell(this,'+idx+',\'type\',\'select\',\'El Yapımı,Hazır\')">'+p.type+'</td>'
++'<td class="editable" ondblclick="editCell(this,'+idx+',\'mat\')">'+p.mat+'</td>'
++'<td class="editable" ondblclick="editCell(this,'+idx+',\'cost\',\'number\')">$'+p.cost+'</td>'
++'<td class="editable" ondblclick="editCell(this,'+idx+',\'sale\',\'number\')">$'+p.sale+'</td>'
++'<td class="'+pc+'">$'+profit+' ('+margin+'%)</td>'
++'<td class="editable" ondblclick="editCell(this,'+idx+',\'stock\',\'number\')">'+p.stock+'</td>'
++'<td>'+sold+'</td>'
++'<td class="editable" ondblclick="editCell(this,'+idx+',\'platform\',\'select\',\'Fuar,Etsy,Fuar+Etsy\')">'+p.platform+'</td>'
++'<td class="editable" style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" ondblclick="editCell(this,'+idx+',\'desc\')">'+(p.desc||'—')+'</td>'
++'<td>'+(p.stock>0?'<button class="btn btn-sell" onclick="sellOne('+idx+')">Sat</button>':'—')+'</td>'
++'<td><span style="cursor:pointer;color:var(--rd);font-weight:700" onclick="products.splice('+idx+',1);save();renderTable()">✕</span></td>'
++'</tr>';
   }).join('');
+  // Total row
+  let tstock=0,tsold=0,tval=0,trev=0,tcs=0;
+  filtered.forEach(p=>{tstock+=p.stock;tsold+=(p.sold||0);tval+=p.sale*p.stock;trev+=p.sale*(p.sold||0);tcs+=p.cost*(p.sold||0);});
+  document.getElementById('tfoot').innerHTML='<tr class="total-row">'
++'<td colspan="5">TOPLAM ('+filtered.length+' ürün)</td>'
++'<td>—</td><td>—</td><td>$'+(trev-tcs)+'</td>'
++'<td><strong>'+tstock+'</strong></td>'
++'<td><strong>'+tsold+'</strong></td>'
++'<td colspan="4">Gerçekleşen: $'+trev+' | Potansiyel: $'+tval+'</td>'
++'</tr>';
   updateSummary();
+}
+
+function sellOne(idx){
+  if(products[idx].stock>0){
+    products[idx].stock--;
+    products[idx].sold=(products[idx].sold||0)+1;
+    save();renderTable();
+  }
 }
 
 function editCell(td,idx,field,type,opts){
@@ -166,15 +193,15 @@ function editCell(td,idx,field,type,opts){
 
 function toggleQuickAdd(){document.getElementById('quickAdd').style.display=document.getElementById('quickAdd').style.display==='block'?'none':'block'}
 function quickAdd(){
-  let p={no:document.getElementById('qaNo').value,name:document.getElementById('qaName').value,cat:document.getElementById('qaCat').value,type:document.getElementById('qaType').value,mat:document.getElementById('qaMat').value,cost:parseFloat(document.getElementById('qaCost').value)||0,sale:parseFloat(document.getElementById('qaSale').value)||0,stock:parseInt(document.getElementById('qaStock').value)||1,platform:document.getElementById('qaPlatform').value,desc:document.getElementById('qaDesc').value};
+  let p={no:document.getElementById('qaNo').value,name:document.getElementById('qaName').value,cat:document.getElementById('qaCat').value,type:document.getElementById('qaType').value,mat:document.getElementById('qaMat').value,cost:parseFloat(document.getElementById('qaCost').value)||0,sale:parseFloat(document.getElementById('qaSale').value)||0,stock:parseInt(document.getElementById('qaStock').value)||1,sold:0,platform:document.getElementById('qaPlatform').value,desc:document.getElementById('qaDesc').value};
   if(!p.name){alert('Ürün adı zorunlu!');return}
   products.push(p);save();renderTable();
   ['qaNo','qaName','qaMat','qaCost','qaSale','qaDesc'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('qaStock').value='1';
 }
 function exportCSV(){
-  let csv='No,Ad,Kategori,Tür,Malzeme,Alış,Satış,Kâr,Stok,Platform,Açıklama\n';
-  products.forEach(p=>{csv+=`"${p.no}","${p.name}","${p.cat}","${p.type}","${p.mat}",${p.cost},${p.sale},${p.sale-p.cost},${p.stock},"${p.platform}","${p.desc}"\n`});
+  let csv='No,Ad,Kategori,Tür,Malzeme,Alış,Satış,Kâr,Stok,Satıldı,Platform,Açıklama\n';
+  products.forEach(p=>{csv+='"'+p.no+'","'+p.name+'","'+p.cat+'","'+p.type+'","'+p.mat+'",'+p.cost+','+p.sale+','+(p.sale-p.cost)+','+p.stock+','+(p.sold||0)+',"'+p.platform+'","'+p.desc+'"\n'});
   let blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
   let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Artisanist_Envanter.csv';a.click();
 }

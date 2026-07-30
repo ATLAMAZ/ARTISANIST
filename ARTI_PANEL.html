@@ -157,6 +157,12 @@
 
   @media (max-width: 900px) { .grid-2,.grid-3,.grid-4,.grid-5,.grid-6 { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 600px) { .grid-2,.grid-3,.grid-4,.grid-5,.grid-6 { grid-template-columns: 1fr; } .header { flex-direction:column; text-align:center; } .header-right { text-align:center; } }
+  .collapsible-header { cursor: pointer; user-select: none; }
+  .collapsible-header:hover { color: var(--lavender); }
+  .collapsible-content { display: none; }
+  .collapsible-content.open { display: block; }
+  .section-label .arrow { font-size: 0.7rem; margin-left: 4px; transition: transform 0.2s; }
+  .section-label .arrow.open { transform: rotate(90deg); }
 </style>
 </head>
 <body>
@@ -207,8 +213,8 @@
 
 <!-- ═══════ ARCHIVE ═══════ -->
 <section>
-  <div class="section-label">🗄️ Arşiv · Tamamlananlar</div>
-  <div class="grid-4">
+  <div class="section-label collapsible-header" onclick="toggleArchive(this)">🗄️ Arşiv · Tamamlananlar <span class="arrow">▶</span></div>
+  <div class="collapsible-content">  <div class="grid-4">
     <div class="card card-lavender">
       <div class="card-tag">✅ Happy Bracelet</div>
       <div class="card-body" style="font-size:0.72rem;">Poster — taş anlamlı. Tamamlandı.</div>
@@ -228,10 +234,8 @@
       <div class="card-tag">✅ Brighton İçerik</div>
       <div class="card-body" style="font-size:0.72rem;">Story + feed post + ürün spotları.</div>
     </div>
-  </div>
+  </div></div>
 </section>
-
-<!-- ═══════ PRIORITIES ═══════ -->
 <section>
   <div class="section-label">⚡ Öncelikli Aksiyonlar</div>
   <div class="grid-4">
@@ -256,8 +260,8 @@
 
 <!-- ═══════ ARCHIVE ═══════ -->
 <section>
-  <div class="section-label">🗄️ Tamamlananlar</div>
-  <div class="grid-4">
+  <div class="section-label collapsible-header" onclick="toggleArchive(this)">🗄️ Tamamlananlar <span class="arrow">▶</span></div>
+  <div class="collapsible-content">  <div class="grid-4">
     <div class="card card-lavender">
       <div class="card-tag">✅ Brighton Bazaar</div>
       <div class="card-body" style="font-size:0.78rem;">$1,200 · Temmuz toplam $2,300</div>
@@ -274,10 +278,8 @@
       <div class="card-tag">✅ Mira Luma</div>
       <div class="card-body" style="font-size:0.78rem;">Bot aktif, SOUL yüklendi, çalışıyor</div>
     </div>
-  </div>
+  </div></div>
 </section>
-
-<!-- ═══════ REPORTS ═══════ -->
 <section>
   <div class="section-label">📋 Raporlar & Finansal</div>
   <div class="grid-4">
@@ -460,6 +462,13 @@
     document.getElementById('liveTime').textContent = now.toLocaleTimeString('tr-TR', opts) + ' EDT';
   }
   updateTime(); setInterval(updateTime, 30000);
+
+  function toggleArchive(el) {
+    var content = el.nextElementSibling;
+    var arrow = el.querySelector('.arrow');
+    content.classList.toggle('open');
+    arrow.classList.toggle('open');
+  }
 
   const tIn=14000, tOut=5000, cIn=(tIn/1e6)*0.40, cOut=(tOut/1e6)*1.60, tc=(cIn+cOut).toFixed(3), db=0.67, p=Math.min(100,(tc/db)*100).toFixed(0);
   document.getElementById('tokenUsed').textContent='~'+(tIn+tOut).toLocaleString();

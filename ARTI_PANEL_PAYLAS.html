@@ -446,6 +446,10 @@
       </div>
       <div style="font-size:0.68rem;color:var(--soft);">🧠 deepseek-v4-pro · 📊 09:00 EDT günlük rapor · 💡 ~$0.30-0.80/gün</div>
     </div>
+    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:12px 0 0 0;margin-top:8px;border-top:1px solid #E0DCE8;">
+      <div><div class="token-num" style="font-size:1.2rem;" id="miraToken">—</div><div class="token-label">✨ Mira Luma · bugünkü token</div></div>
+      <div style="font-size:0.68rem;color:var(--soft);">🧠 openai-codex · 💡 ~$0.05-0.15/gün</div>
+    </div>
   </div>
 </section>
 
@@ -476,6 +480,10 @@
   document.getElementById('tokenBar').style.width=p+'%';
   if(p>70)document.getElementById('tokenBar').style.background='#C4A455';
   if(p>90)document.getElementById('tokenBar').style.background='#C48585';
+
+  // Mira Luma token estimate
+  const mIn=3000, mOut=1000, mc=(mIn/1e6)*0.02+(mOut/1e6)*0.04;
+  document.getElementById('miraToken').textContent='~'+(mIn+mOut).toLocaleString();
 </script>
 </div><script>function login(){if(document.getElementById("pw").value==="ARTI"){document.getElementById("ls").style.display="none";document.getElementById("pn").style.display="block"}else{document.getElementById("le").style.display="block"}}</script></body>
 </html>
